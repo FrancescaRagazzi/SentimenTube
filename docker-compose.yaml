@@ -1,0 +1,175 @@
+version: '3'
+services:
+
+  video-extract:
+    build:
+      context: ./python 
+      dockerfile: ./Dockerfile
+    image: video-extract 
+    depends_on:
+      logstash:
+        condition: service_healthy
+    container_name: video-extract
+    networks:
+      tap:
+        ipv4_address: 10.0.100.21
+  
+  logstash:
+    build: 
+      context: ./logstash
+      dockerfile: ./Dockerfile
+    image: logstash
+    container_name: logstash
+    ports:
+      - 9600:9600 #helthcheck
+      - 9800:9800 #python
+    expose:
+      - "9600"
+      - "9800"
+    depends_on:
+      - broker  
+      - zookeeper 
+      - kafka-ui 
+      - init-kafka
+    healthcheck:
+      test: "curl -f logstash:9600"
+      interval: 5s
+      timeout: 500s
+      retries: 100
+    networks:
+      tap:
+        ipv4_address: 10.0.100.26
+
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.0.1
+    container_name: zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181 
+      ZOOKEEPER_TICK_TIME: 2000
+    networks:
+      tap:
+        ipv4_address: 10.0.100.22
+
+  broker:
+    image: confluentinc/cp-kafka:7.0.1
+    container_name: broker
+    hostname: broker
+    ports:
+      - 9092:9092
+    networks:
+      tap:
+        ipv4_address: 10.0.100.23
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://broker:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+
+  kafka-ui:
+    image: provectuslabs/kafka-ui:latest
+    container_name: kafka-ui
+    depends_on:
+      - zookeeper
+      - broker
+    ports:
+      - 8080:8080
+    networks:
+      tap:
+        ipv4_address: 10.0.100.24
+    restart: always
+    environment:
+      KAFKA_CLUSTERS_0_NAME: local
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: broker:9092
+      KAFKA_CLUSTERS_0_ZOOKEEPER: zookeeper:2181
+
+  init-kafka:
+    image: confluentinc/cp-kafka:7.0.1
+    depends_on:
+      - broker
+      - zookeeper
+      - kafka-ui
+    entrypoint: [ '/bin/sh', '-c' ]
+    command: |
+      "
+      # Wait for the broker to be available
+      while ! nc -z broker 9092; do   
+        echo 'Waiting for the broker to be available...'
+        sleep 1
+      done
+
+      # blocks until kafka is reachable
+      kafka-topics --bootstrap-server broker:9092 --list
+
+      echo -e 'Creating kafka topics'
+      kafka-topics --bootstrap-server broker:9092 --create --if-not-exists --topic videos --replication-factor 1 --partitions 1
+
+      echo -e 'Successfully created the following topics:'
+      kafka-topics --bootstrap-server broker:9092 --list
+      "
+    networks:
+      tap:
+        ipv4_address: 10.0.100.25
+
+
+  spark:
+    build:
+      context: ./spark
+      dockerfile: ./src/Dockerfile
+    container_name: spark
+    depends_on:
+      video-extract:
+        condition: service_started
+    environment:
+      SPARK_ACTION: spark-submit-python 
+    volumes:
+      - ./.ivy2/:/root/.ivy2 
+    networks:
+      tap:
+        ipv4_address: 10.0.100.20
+
+  elasticsearch:
+    container_name: elasticsearch
+    build:
+      context: ./elasticsearch
+      dockerfile: Dockerfile
+    image: elasticsearch
+    networks:
+      tap:
+        ipv4_address: 10.0.100.27
+    ports:
+        - 9200:9200
+    environment:
+      cluster.name: elasticsearch-cluster
+      node.name: elasticsearch
+      discovery.type: single-node
+      xpack.security.enabled: "false"
+      xpack.security.enrollment.enabled: "false"
+      ES_JAVA_OPTS: -Xms512m -Xmx512m 
+
+  kibana:
+    build:
+      context: ./kibana
+      dockerfile: Dockerfile
+    image: kibana
+    container_name: kibana
+    hostname: kibana
+    ports:
+      - 5601:5601
+    networks:
+      tap:
+        ipv4_address: 10.0.100.28
+    environment:
+        xpack.security.enabled: "false"
+    volumes:
+      - ./kibana/data/:/usr/share/kibana/data
+    depends_on:
+      - elasticsearch
+
+networks:
+  tap:
+    external: true

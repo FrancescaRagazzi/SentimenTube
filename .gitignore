@@ -1,0 +1,6 @@
+spark/.ivy2
+spark/src/.ivy2
+.ivy2
+spark/src/setup/spark-3.4.1-bin-hadoop3
+**/*.DS_Store
+spark/.DS_Store
