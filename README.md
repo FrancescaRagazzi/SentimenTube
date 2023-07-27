@@ -21,7 +21,8 @@ L'integrazione di Elasticsearch e Kibana offre una visualizzazione intuitiva e i
 <p>
  2. ```docker network create tap -d bridge --subnet=10.0.100.0/24```
 </p>
-<p> 3. ```docker compose up --build``` </p>
+<p> 
+3. ```docker compose up --build``` </p>
 
 
 </p>
