@@ -11,7 +11,7 @@ L'integrazione di Elasticsearch e Kibana offre una visualizzazione intuitiva e i
 </p>
 
 <h2> Pipeline SentimenTube </h2>
-<img src="images/p4.png"  width="500"/> 
+<img src="images/p4.png"/> 
 
 <h2> Avvio SentimenTube </h2>
 <p> Per avviare SentimenTube è necessario: 
