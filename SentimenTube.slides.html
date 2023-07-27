@@ -14659,7 +14659,7 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><img align="center" alt="SentimenTUbe" src="images/1.png" style="width: 1000px;"/></p>
+<p><img align="center" alt="SentimenTube" src="images/1.png" style="width: 5000px;"/></p>
 </div>
 </div>
 </div>
@@ -14670,7 +14670,7 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><img alt="No description has been provided for this image" src="images/10.png" width="10000"/></p>
+<p><img align="center" alt="No description has been provided for this image" src="images/last.png"/></p>
 </div>
 </div>
 </div>
@@ -14682,7 +14682,7 @@ div.jp-OutputPrompt {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2> Come vengono recuperati i dati? </h2>
-<p><img alt="No description has been provided for this image" src="images/producer.png" width="20000"/></p>
+<p><img alt="No description has been provided for this image" src="images/producer.png"/></p>
 </div>
 </div>
 </div>
@@ -14718,12 +14718,14 @@ response_videos = request_videos.execute()
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2> Comments </h2>
 <p>
-<pre><code>request_comments = youtube.commentThreads().list( 
+<pre><code>    
+request_comments = youtube.commentThreads().list( 
     part="snippet",
     videoId=video_id, 
     maxResults=20,
     order="relevance"
 )
+    
 </code></pre>
 </p>
 </div>
@@ -14737,11 +14739,21 @@ response_videos = request_videos.execute()
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2> Come arrivano i dati su Kafka? </h2>
-<img align="center" alt="SentimenTUbe" src="images/logstash.png" style="width: 200px;"/>
 </div>
 </div>
 </div>
 </div><div class="fragment">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><img align="center" alt="SentimenTube" src="images/logstash.png" style="width: 200px;"/></p>
+</div>
+</div>
+</div>
+</div></div><div class="fragment">
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -14800,11 +14812,10 @@ output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1> Cos'è Kafka ? </h1>
+<h2> Cos'è Kafka ? </h2>
 <p>
 Kafka è una piattaforma open-source di streaming e messaggistica che consente la gestione affidabile e scalabile di flussi di dati in tempo reale ed è basato sul design pattern "Publish-Subscribe"
 </p>
-<img alt="No description has been provided for this image" src="images/kafka.png" width="200"/>
 </div>
 </div>
 </div>
@@ -14837,6 +14848,7 @@ Kafka è una piattaforma open-source di streaming e messaggistica che consente l
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><img align="center" alt="No description has been provided for this image" src="images/kafka.png" width="150"/></p>
 <h3> I concetti chiave di Apache Kafka includono: </h3>
 <p><b> Producer:</b>È un'applicazione o un servizio che invia i messaggi a uno o più topic di Kafka. I produttori sono responsabili della pubblicazione dei dati nel sistema. </p>
 <p><b> Consumer: </b> È un'applicazione o un servizio che legge i messaggi dai topic a cui si è sottoscritto.</p>
@@ -14855,7 +14867,8 @@ Kafka è una piattaforma open-source di streaming e messaggistica che consente l
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h3> Zookeeper </h3>
 <p>
-<pre><code>zookeeper:
+<pre><code>    
+zookeeper:
 image: confluentinc/cp-zookeeper:7.0.1
 container_name: zookeeper
 environment:
@@ -14864,6 +14877,7 @@ environment:
 networks:
   tap:
     ipv4_address: 10.0.100.22
+    
 </code></pre>
 </p>
 </div>
@@ -14878,7 +14892,8 @@ networks:
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h3> Broker </h3>
 <p>
-<pre><code>  broker:
+<pre><code>    
+  broker:
     image: confluentinc/cp-kafka:7.0.1
     container_name: broker
     hostname: broker
@@ -14896,6 +14911,7 @@ networks:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
       KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+    
 </code></pre>
 </p>
 </div>
@@ -14910,7 +14926,8 @@ networks:
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h3> Kafka-ui </h3>
 <p>
-<pre><code>   kafka-ui:
+<pre><code>    
+   kafka-ui:
     image: provectuslabs/kafka-ui:latest
     container_name: kafka-ui
     depends_on:
@@ -14926,6 +14943,7 @@ networks:
       KAFKA_CLUSTERS_0_NAME: local
       KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: broker:9092
       KAFKA_CLUSTERS_0_ZOOKEEPER: zookeeper:2181
+    
 </code></pre>
 </p>
 </div>
@@ -14940,7 +14958,8 @@ networks:
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h3> Init-Kafka </h3>
 <p>
-<pre><code>init-kafka:
+<pre><code>    
+init-kafka:
     image: confluentinc/cp-kafka:7.0.1
     depends_on:
       - broker
@@ -14967,6 +14986,7 @@ networks:
     networks:
       tap:
         ipv4_address: 10.0.100.25
+    
 
 </code></pre>
 </p>
@@ -14981,12 +15001,22 @@ networks:
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2> Come vengono elaborati i dati? </h2>
-<img alt="No description has been provided for this image" src="images/spark.png" width="200"/>
-<img alt="No description has been provided for this image" src="images/nltk.png" width="200"/>
 </div>
 </div>
 </div>
 </div><div class="fragment">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><img align="center" alt="No description has been provided for this image" src="images/spark.png" width="150"/>
+<img align="center" alt="No description has been provided for this image" src="images/nltk.png" width="100"/></p>
+</div>
+</div>
+</div>
+</div></div><div class="fragment">
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -15040,7 +15070,7 @@ Il Natural Language Toolkit, più comunemente conosciuto come NLTK, è una suite
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2> Make Sentiment Analysis </h2>
+<h2> Sentiment Analysis </h2>
 <p>
 <pre><code>sia = SentimentIntensityAnalyzer()   
 
@@ -15063,7 +15093,7 @@ def calculate_comment_sentiment(comment):
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2> Send to elastiksearch </h2>
+<h2> Send to elasticsearch </h2>
 <p>
 <pre><code>def write_to_elasticsearch(df):
     es = Elasticsearch(f"{elasticsearch_host}:{elasticsearch_port}", verify_certs=False)
@@ -15089,11 +15119,21 @@ def calculate_comment_sentiment(comment):
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2> Come vengono indicizzati i dati? </h2>
-<img alt="No description has been provided for this image" src="images/elasticksearch.png" width="200"/>
 </div>
 </div>
 </div>
 </div><div class="fragment">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><img alt="No description has been provided for this image" src="images/elasticksearch.png" width="200"/></p>
+</div>
+</div>
+</div>
+</div></div><div class="fragment">
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -15114,11 +15154,21 @@ Elasticsearch è un motore di ricerca distribuito potente e flessibile, utilizza
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2> Come vengono visualizzati i dati? </h2>
-<img alt="No description has been provided for this image" src="images/kibana.png" width="200"/>
 </div>
 </div>
 </div>
 </div><div class="fragment">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><img alt="No description has been provided for this image" src="images/kibana.png" width="200"/></p>
+</div>
+</div>
+</div>
+</div></div><div class="fragment">
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -15131,7 +15181,19 @@ Kibana è un'applicazione web open-source di visualizzazione e analisi dei dati,
 </div>
 </div>
 </div>
-</div></div></section></section><section><section>
+</div></div></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><img alt="No description has been provided for this image" height="300" src="images/v1.png"/>
+<img alt="No description has been provided for this image" height="300" src="images/v2.png"/></p>
+</div>
+</div>
+</div>
+</div></section></section><section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -15164,7 +15226,7 @@ Kibana è un'applicazione web open-source di visualizzazione e analisi dei dati,
 </div>
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -15175,39 +15237,31 @@ Kibana è un'applicazione web open-source di visualizzazione e analisi dei dati,
 </div>
 </div>
 </div>
-</div>
+</div></div></section></section><section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2> Problemi? </h2>
+<h2> Sviluppi futuri? </h2>
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><img alt="No description has been provided for this image" src="images/memememory.png" width="500"/></p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-</div>
+<p>
+<ul>
+<li>Usare SentimenTube per i video di uno specifico canale</li>
+<li>Includere questo indice nel grado di preferenza</li>
+<li>Riuscire a determinare un'emozione</li>
+</ul>
+</p>
 </div>
 </div>
 </div>
