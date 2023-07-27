@@ -11,10 +11,15 @@ L'integrazione di Elasticsearch e Kibana offre una visualizzazione intuitiva e i
 </p>
 
 <h2> Pipeline SentimenTube </h2>
-<img src="images/p4.png"/> 
+<p>
+    <img src="images/p4.png"/> 
+</p>
 
 <h2> Avvio SentimenTube </h2>
 <p> Per avviare SentimenTube è necessario: 
 - download  https://dlcdn.apache.org/spark/spark-3.4.1/spark-3.4.1-bin-hadoop3.tgz estrarlo e metterlo nel path spark/setup/
 - ```docker network create tap -d bridge --subnet=10.0.100.0/24```
 - ```docker compose up --build```
+
+
+</p>
