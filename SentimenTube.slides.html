@@ -14659,6 +14659,63 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><img align="center" alt="SentimenTube" src="images/YouTube.png" style="width: 700px;"/></p>
+</div>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2> Problema </h2>
+</div>
+</div>
+</div>
+</div><div class="fragment">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3> Gli utenti che visuliazzano un video che emozioni provano mediamente? Esiste un indice che me lo dimostra?
+
+
+</h3></div>
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><img align="center" alt="SentimenTube" src="images/views.png" style="width: 150px;"/></p>
+</div>
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><img align="center" alt="SentimenTube" src="images/like.png" style="width: 200px;"/></p>
+</div>
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><img align="center" alt="SentimenTube" src="images/1.png" style="width: 5000px;"/></p>
 </div>
 </div>
@@ -14796,7 +14853,7 @@ output {
    kafka {
     codec =&gt; json
     topic_id =&gt; "videos"
-    bootstrap_servers =&gt; "10.0.100.23:9092"
+    bootstrap_servers =&gt; "broker:9092"
   }
 }
 
@@ -14850,10 +14907,10 @@ Kafka è una piattaforma open-source di streaming e messaggistica che consente l
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><img align="center" alt="No description has been provided for this image" src="images/kafka.png" width="150"/></p>
 <h3> I concetti chiave di Apache Kafka includono: </h3>
-<p><b> Producer:</b>È un'applicazione o un servizio che invia i messaggi a uno o più topic di Kafka. I produttori sono responsabili della pubblicazione dei dati nel sistema. </p>
+<p><b> Producer:</b>È un'applicazione o un servizio che invia i messaggi a uno o più topic di Kafka. </p>
 <p><b> Consumer: </b> È un'applicazione o un servizio che legge i messaggi dai topic a cui si è sottoscritto.</p>
-<p><b> Topic: </b>È un canale logico o una categoria a cui i messaggi vengono pubblicati e dai quali i consumatori ricevono i dati. I topic consentono la suddivisione dei dati in base al tipo o al contenuto. <p></p>
-<p><b> Broker: </b>È un nodo all'interno del cluster di Kafka. I broker sono responsabili della ricezione, dell'archiviazione e dell'inoltro dei messaggi ai consumatori appropriati. <p>
+<p><b> Topic: </b>È un canale logico o una categoria a cui i messaggi vengono pubblicati e dai quali i consumatori ricevono i dati. <p></p>
+<p><b> Broker: </b>È un nodo all'interno del cluster di Kafka. <p>
 <p> <b> ZooKeeper </b> : Kafka utilizza ZooKeeper per il coordinamento e la gestione del cluster.</p>
 </p></p></p></div>
 </div>
@@ -15024,7 +15081,7 @@ init-kafka:
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>
-Apache Spark è un framework open-source di elaborazione di dati distribuita progettato per l'analisi, e l'elaborazione di grandi quantità di dati in modo rapido e scalabile. Offre un'interfaccia di programmazione semplice per lavorare con dati strutturati e non strutturati, consentendo di eseguire operazioni di analisi, elaborazione e apprendimento automatico su cluster di computer in modo efficiente.
+Apache Spark è un framework open-source di elaborazione di dati distribuita progettato per l'analisi e l'elaborazione di grandi quantità di dati in modo rapido e scalabile. 
 </p>
 </div>
 </div>
@@ -15038,6 +15095,8 @@ Apache Spark è un framework open-source di elaborazione di dati distribuita pro
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>
 Il Natural Language Toolkit, più comunemente conosciuto come NLTK, è una suite di librerie e programmi per l'analisi simbolica e statistica nel campo dell'elaborazione del linguaggio naturale principalmente in lingua inglese scritta in linguaggio Python.
+    </p><p>
+Il "VADER Lexicon" è una funzionalità della libreria NLTK utilizzata per analizzare il sentiment nei testi. 
 </p>
 </div>
 </div>
@@ -15049,7 +15108,7 @@ Il Natural Language Toolkit, più comunemente conosciuto come NLTK, è una suite
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2> Take data from Kafka </h2>
+<h2> Taking data from Kafka </h2>
 <p>
 <pre><code>kafka_df = spark.readStream \
     .format("kafka") \
@@ -15072,7 +15131,10 @@ Il Natural Language Toolkit, più comunemente conosciuto come NLTK, è una suite
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2> Sentiment Analysis </h2>
 <p>
-<pre><code>sia = SentimentIntensityAnalyzer()   
+<pre><code>    
+nltk.download('vader_lexicon') 
+    
+sia = SentimentIntensityAnalyzer()   
 
     
 def calculate_comment_sentiment(comment):
@@ -15258,7 +15320,6 @@ Kibana è un'applicazione web open-source di visualizzazione e analisi dei dati,
 <p>
 <ul>
 <li>Usare SentimenTube per i video di uno specifico canale</li>
-<li>Includere questo indice nel grado di preferenza</li>
 <li>Riuscire a determinare un'emozione</li>
 </ul>
 </p>
