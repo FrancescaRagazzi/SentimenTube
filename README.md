@@ -1,7 +1,7 @@
 <h1> SentimenTube </h1>
 <img src="images/logo.png"/> 
 <br>
-<p> Sentiment Tube" è un progetto all'avanguardia che si propone di esplorare e comprendere il mondo dei contenuti video di YouTube attraverso l'analisi dei sentimenti espressi nei commenti degli utenti. Sfruttando una combinazione di potenti tecnologie, tra cui Logstash, Kafka, Spark, Elasticsearch e Kibana, il progetto mira a fornire una visione esaustiva del panorama emotivo associato ai video condivisi online.
+<p> Sentiment Tube" è un progetto che si propone di esplorare e comprendere il mondo dei contenuti video di YouTube attraverso l'analisi dei sentimenti espressi nei commenti degli utenti. Sfruttando una combinazione di potenti tecnologie, tra cui Logstash, Kafka, Spark, Elasticsearch e Kibana, il progetto mira a fornire una visione esaustiva del panorama emotivo associato ai video condivisi online.
 
 Con l'obiettivo di svelare il sentimento dominante nei commenti, "Sentiment Tube" utilizza la libreria di analisi del linguaggio naturale NLTK per calcolare il polarity score, valutando se i commenti esprimono un tono positivo, negativo o neutro. Questa analisi consentirà ai creatori di contenuti, ai marketer e agli studiosi di ottenere preziose intuizioni sul coinvolgimento e l'impatto emozionale dei video su YouTube.
 
