@@ -1,5 +1,5 @@
 <h1> SentimenTube </h1>
-<img src="images/logo.png"  width="500"/> 
+<img src="images/logo.png"/> 
 <br>
 <p> Sentiment Tube" è un progetto all'avanguardia che si propone di esplorare e comprendere il mondo dei contenuti video di YouTube attraverso l'analisi dei sentimenti espressi nei commenti degli utenti. Sfruttando una combinazione di potenti tecnologie, tra cui Logstash, Kafka, Spark, Elasticsearch e Kibana, il progetto mira a fornire una visione esaustiva del panorama emotivo associato ai video condivisi online.
 
